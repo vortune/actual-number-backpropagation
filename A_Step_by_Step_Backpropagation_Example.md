@@ -83,7 +83,7 @@ $$
 We can now calculate the error for each output neuron using the [squared error function](http://en.wikipedia.org/wiki/Backpropagation#Derivation) and sum them to get the total error:
 
 $$
-E_{total} = \sum \frac{1}{2}(target - output)^2
+E_{total} = \sum \frac{1}{2}\|target - output\|^2
 $$
 
 > [Some sources](http://www.amazon.com/Introduction-Math-Neural-Networks-Heaton-ebook/dp/B00845UQL6/ref=sr_1_1?ie=UTF8&qid=1426296804&sr=8-1&keywords=neural+network) refer to the target as the *ideal* and the output as the *actual*.
@@ -94,8 +94,8 @@ For example, the target output for $o_1$ is 0.01 but the neural network output
 
 $$
 \begin{align}
-E_{o1} &= \frac{1}{2}(target_{o1}-out_{o1})^2 \\ \\
-&=\frac{1}{2}(0.01-0.75136507)^2 \\ \\
+E_{o1} &= \frac{1}{2}\|target_{o1}-out_{o1}\|^2 \\ \\
+&=\frac{1}{2}\|0.01-0.75136507\|^2 \\ \\
 &= 0.274811083
 \end{align}
 $$
@@ -145,12 +145,12 @@ First, how much does the total error change with respect to the output?
 
 $$
 \begin{align}
-E_{total} &= \frac{1}{2}(target_{o1}-out_{o1})^2 
-+ \frac{1}{2}(target_{o2}-out_{o2})^2 \\ \\
+E_{total} &= \frac{1}{2}\|target_{o1}-out_{o1}\|^2 
++ \frac{1}{2}\|target_{o2}-out_{o2}\|^2 \\ \\
 \frac {\partial E_{o1}}{\partial out_{o1}} &=
-2 \cdot \frac {1}{2}(target_{o1}-out_{o1})^{2-1} \cdot -1 + 0 \\ \\
-&= -(target_{o1}-out_{o1}) \\ \\
-&= -(0.01-0.75136507) \\ \\
+2 \cdot \frac {1}{2}\|target_{o1}-out_{o1}\|^{2-1} + 0 \\ \\
+&= \|target_{o1}-out_{o1}\| \\ \\
+&= \|0.01-0.75136507\| \\ \\
 &= 0.74136507
 \end{align}
 $$

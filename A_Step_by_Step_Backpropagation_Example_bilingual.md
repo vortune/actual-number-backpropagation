@@ -64,14 +64,23 @@ For the rest of this tutorial we’re going to work with a single training set: 
 
 ## The Forward Pass
 
+## 前向传播
+
 To begin, lets see what the neural network currently predicts given the weights and biases above and inputs of 0.05 and 0.10. To do this we’ll feed those inputs forward though the network.
+
+让我们看看在一开始时，神经网络在前面所设定的权重量与偏至量下，在输入量为 0.05 与 0.10 时，会输出什么。为此，我们将输入量向前传递，历遍整个网络。
 
 We figure out the *total net input* to each hidden layer neuron, *squash* the total net input using an *activation function* (here we use the *logistic function*), then repeat the process with the output layer neurons.
 
+我们需要计算每个隐藏层神经元接收的`总网络输入`，并且以`激活函数`将总网络输入压出（这里我们使用`logistic 函数`），然后对输出层神经元重复同样的步骤。
+
 > Total net input is also referred to as just net input by [some sources](http://web.cs.swarthmore.edu/~meeden/cs81/s10/BackPropDeriv.pdf).
+>
+> 有一些[资料](http://web.cs.swarthmore.edu/~meeden/cs81/s10/BackPropDeriv.pdf)又将总网络输入称为网络输入。
 
 Here’s how we calculate the total net input for $h_1$ :
 
+这里我们计算隐藏层第一个神经元 $h_1$ 所接收的总输入：
 $$
 \begin{align}
 net_{h1}  &=  w_1 \cdot i_1 + w_2 \cdot i_2 + b_1 \cdot 1 \\ \\
@@ -82,6 +91,7 @@ $$
 
 We then squash it using the logistic function to get the output of $h_1$ :
 
+接着我们以 logistic 函数将它压出作为神经元 $h_1$ 输出：
 $$
 \begin{align}
 out_{h1} &= \frac{1}{1+e^{-net_{h1}}} \\ \\
@@ -90,16 +100,35 @@ out_{h1} &= \frac{1}{1+e^{-net_{h1}}} \\ \\
 \end{align}
 $$
 
+> ##### 译注：
+>
+> 选择 logistic 函数作为激活函数是有原因的。它的形式如下：
+> $$
+> f(x) = \frac{1}{1+e^{-x}}
+> $$
+>
+> 首先他是一个 S 型函数，它的值范围是 0～1（ $f(x) \in \left[0,1\right]$ ），它的跳变特性有利于该神经元对数据特征的表达。它的图形如下：
+>
+> ![](./Logistic-curve.svg.png)
+>
+> 此外它的一个特征是它的微分形式非常简洁，对计算十分有利，我们很快就可以在下文中看到它的这一优势特性。
+>
+> 事实上，并不是所有神经网络都采用 logistic 函数作为激活函数的。随着机器学习的快速发展，目前各种不同功能特性的神经网络中，也有采用其他的函数作为激活函数的。最典型的做法是在深度学习网络中，加入一些特定的层，以及特定的激活函数，从而达到强化网络的某种特定功能或者特定性能的目的。
+
 Carrying out the same process for $h_2$ we get:
 
+同样的步骤，我们就能得到 $h_2$ 的输出：
 $$
 out_{h2} = 0.596884378
 $$
 
 We repeat this process for the output layer neurons, using the output from the hidden layer neurons as inputs.
 
+我们将隐藏层的输出当作输出层的输入，就可以对输出层做同样的计算。
+
 Here’s the output for $o_1$:
 
+下面是输出层第一个神经元 $o_1$ 的输出量：
 $$
 \begin{align}
 net_{o1} &= w_5 \cdot out_{h1} + w_6 \cdot out_{h2} + b_2 \cdot 1 \\ \\
@@ -112,6 +141,8 @@ out_{o1} &= \frac{1}{1+e^{-net_{o1}}} \\ \\
 $$
 
 And carrying out the same process for $o_2$ we get:
+
+并且以同样的步骤得到输出层的第二个输出量 $o_2$ ：
 $$
 out_{o2} = 0.772928465
 $$

@@ -1,12 +1,18 @@
 # A Step by Step Backpropagation Example
 
-# 一步一步理解反向传播
+# 一步一步实例理解反向传播
 
 > ##### 译序
 >
 > 由于人工智能在近年取得的巨大成功，在我的工作中需要涉及机器学习，以及人工智能的项目和产品需求越来越多。而合作的同事们未必都有很好的数学和计算机基础，为了未来工作中更好地沟通，我找来了这篇非常好的文章，以便大家能对机器学习，以及人工智能的实现方式有个简捷、直观的了解。
 >
 > 本来原文的英语就非常简洁，逻辑清晰，语义上并无翻译的必要。译文的意义在于记录我自己的一些体会，以及提示一些计算机与应用数学方面的概念和技巧，以便其他专业的朋友易于理解。译文也对原文进行了一些数学表述上修改，以便大家更容易去除理解上的混乱。
+>
+> 本译文是作为一个开源项目发布在 [GitHub](https://github.com/vortune/actual-number-backpropagation) 上。你可以通过下面的命令克隆这个项目：
+>
+> ```shell
+> $ git clone https://github.com/vortune/actual-number-backpropagation.git
+> ```
 >
 > 原著：[Matthew.H.Mazur](matthew.h.mazur@gmail.com)
 >
@@ -22,23 +28,39 @@ If this kind of thing interests you, you should [sign up for my newsletter](htt
 
 ## Backpropagation in Python
 
+##Python 语言实现的反向传播
+
 You can play around with a Python script that I wrote that implements the backpropagation algorithm in [this Github repo](https://github.com/mattm/simple-neural-network).
+
+你可以通过一个我在[Github 源码库](https://github.com/mattm/simple-neural-network)中的一个 Python 脚本程序来体会反向传播算法。
 
 ## Overview
 
+##概述
+
 For this tutorial, we’re going to use a neural network with two inputs, two hidden neurons, two output neurons. Additionally, the hidden and output neurons will include a bias.
 
+在这一教程中，我们将使用一个简单的神经网络，它包含两个输入，两个隐藏神经元，两个输出神经元。另外，隐藏和输出神经元都各自包含一个偏至量。
+
 Here’s the basic structure:
+
+下面就是这个基本结构：
 
 ![](./neural_network-7.png)
 
 In order to have some numbers to work with, here are the **initial weights**, the **biases**, and **training inputs/outputs**:
 
+为了展开实际的数值计算工作，这里需要设定**权重**，**偏至**，以及用于训练的**输入**/**输出**的初始值。
+
 ![](./neural_network-9.png)
 
 The goal of backpropagation is to optimize the weights so that the neural network can learn how to correctly map arbitrary inputs to outputs.
 
+反向传播算法的目的，就是优化神经元的链接权重，以便神经网络嫩够形成一个从输入变换到输出的映射关系。
+
 For the rest of this tutorial we’re going to work with a single training set: given inputs 0.05 and 0.10, we want the neural network to output 0.01 and 0.99.
+
+在本教程的余下部分中，我们将通过一个训练集来工作：给定的输入为 0.05 与 0.10，我们希望神经网络输出 0.01 与 0.99。
 
 ## The Forward Pass
 

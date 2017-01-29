@@ -520,7 +520,7 @@ We can now update $w_1$:
 $$
 \begin{align}
 w_1^{+} &= w_1 - \eta \cdot \frac {\partial E_{total}}{\partial w_1} \\ \\
-&= 0.15 - 0.15 * 0.000438568 \\ \\
+&= 0.15 - 0.5 * 0.000438568 \\ \\
 &= 0.149780716
 \end{align}
 $$

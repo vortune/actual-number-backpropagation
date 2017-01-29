@@ -149,18 +149,34 @@ $$
 
 ### Calculating the Total Error
 
+### 计算总误差
+
 We can now calculate the error for each output neuron using the [squared error function](http://en.wikipedia.org/wiki/Backpropagation#Derivation) and sum them to get the total error:
 
+现在我们可以用[平方差函数](http://en.wikipedia.org/wiki/Backpropagation#Derivation)来计算输出层每个神经元的误差，并且将它们相加来得到总误差。
 $$
 E_{total} = \sum \frac{1}{2}\|target - output\|^2
 $$
 
+>##### 译注：
+>
+>误差计算的函数在机器学习中被成为`代价函数`（Cost Function），也被翻译为`成本函数`。与激活函数一样，代价函数也可以有多种形式，并不限于平方差函数。
+
 > [Some sources](http://www.amazon.com/Introduction-Math-Neural-Networks-Heaton-ebook/dp/B00845UQL6/ref=sr_1_1?ie=UTF8&qid=1426296804&sr=8-1&keywords=neural+network) refer to the target as the *ideal* and the output as the *actual*.
+>
+> [有些资料](http://www.amazon.com/Introduction-Math-Neural-Networks-Heaton-ebook/dp/B00845UQL6/ref=sr_1_1?ie=UTF8&qid=1426296804&sr=8-1&keywords=neural+network)将目标称为*期望*，将输出称为*事实*。
 
 > The $\frac{1}{2}$ is included so that exponent is cancelled when we differentiate later on. The result is eventually multiplied by a learning rate anyway so it doesn’t matter that we introduce a constant here [[1](http://en.wikipedia.org/wiki/Backpropagation#Derivation)].
+>
+> 这里包含的 $\frac{1}{2}$ 这个前置项是为了在后面的微分运算的结果中约掉它。这里计算的结果，最终都将用于与学习的速率相乘，所以不必在意这里引入一个常数项。
+>
+> > 译注：统一引入一个全局的常数项，并不会影响整个网络的计算结果。但是在计算中约掉一个乘法项，对算法的工程性能有很大的提高。在计算工程实现中，这样的技巧比比皆是。
+
+
 
 For example, the target output for $o_1$ is 0.01 but the neural network output 0.75136507, therefore its error is:
 
+以输出层第一个神经元 $o_1$ 为例，它的目标输出为 0.01，但是网络输出却是 0.75136507，所以它的误差如下：
 $$
 \begin{align}
 E_{o1} &= \frac{1}{2}\|target_{o1}-out_{o1}\|^2 \\ \\
@@ -171,12 +187,14 @@ $$
 
 Repeating this process for $o_2$ (remembering that the target is 0.99) we get:
 
+重复上述步骤得到 $o_2$ 的输出量（记得它的目标值是 0.99）：
 $$
 E_{o2} = 0.023560026
 $$
 
 The total error for the neural network is the sum of these errors:
 
+网络的总误差就是这些误差之和：
 $$
 \begin{align}
 E_{total} &= E_{o1} + E_{o2} \\ \\

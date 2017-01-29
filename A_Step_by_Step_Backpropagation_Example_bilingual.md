@@ -1,5 +1,17 @@
 # A Step by Step Backpropagation Example
 
+# 一步一步理解反向传播
+
+> ##### 译序
+>
+> 由于人工智能在近年取得的巨大成功，在我的工作中需要涉及机器学习，以及人工智能的项目和产品需求越来越多。而合作的同事们未必都有很好的数学和计算机基础，为了未来工作中更好地沟通，我找来了这篇非常好的文章，以便大家能对机器学习，以及人工智能的实现方式有个简捷、直观的了解。
+>
+> 本来原文的英语就非常简洁，逻辑清晰，语义上并无翻译的必要。译文的意义在于记录我自己的一些体会，以及提示一些计算机与应用数学方面的概念和技巧，以便其他专业的朋友易于理解。译文也对原文进行了一些数学表述上修改，以便大家更容易去除理解上的混乱。
+>
+> 原著：[Matthew.H.Mazur](matthew.h.mazur@gmail.com)
+>
+> 编译：[罗峥嵘](vortune@163.com)
+
 Backpropagation is a common method for training a neural network. There is [no shortage of papers](https://www.google.com/search?q=backpropagation+algorithm) online that attempt to explain how backpropagation works, but few that include an example with actual numbers. This post is my attempt to explain how it works with a concrete example that folks can compare their own calculations to in order to ensure they understand backpropagation correctly.
 
 If this kind of thing interests you, you should [sign up for my newsletter](http://www.emergentmind.com/newsletter) where I post about AI-related projects that I’m working on.

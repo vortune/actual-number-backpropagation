@@ -244,12 +244,19 @@ Visually, here’s what we’re doing:
 
 We need to figure out each piece in this equation.
 
+我们需要计算出等式中的每个单项。
+
 First, how much does the total error change with respect to the output?
+
+首先是每个输出项对于总体误差的相关性影响有多大？
+$$
+E_{total} = \frac{1}{2}\|target_{o1}-out_{o1}\|^2 
++ \frac{1}{2}\|target_{o2}-out_{o2}\|^2
+$$
+> 译注：对上面的等式两边取 $out_{o1}$ 的偏微分：
 
 $$
 \begin{align}
-E_{total} &= \frac{1}{2}\|target_{o1}-out_{o1}\|^2 
-+ \frac{1}{2}\|target_{o2}-out_{o2}\|^2 \\ \\
 \frac {\partial E_{o1}}{\partial out_{o1}} &=
 2 \cdot \frac {1}{2}\|target_{o1}-out_{o1}\|^{2-1} + 0 \\ \\
 &= \|target_{o1}-out_{o1}\| \\ \\
@@ -258,11 +265,11 @@ E_{total} &= \frac{1}{2}\|target_{o1}-out_{o1}\|^2
 \end{align}
 $$
 
-> $-(target - out)$ is sometimes expressed as $(out - target)$
+> When we take the partial derivative of the total error with respect to $out_{o1}$, the quantity $\frac{1}{2}\|target_{o2} - out_{o2}\|^{2}$ becomes zero because $out_{o1}$ does not affect it which means we’re taking the derivative of a constant which is zero.
+>
+> 当我们对总体误差取关于 $out_{o1}$ 的偏微分时，总体误差的第二项 $\frac{1}{2} \|target_{o2} - out_{o2}\|^2$ 将等于 0，因为 $out_{o1}$ 的变化对于该项并无影响，其意义就如我们所说的，一个常数的导数总是等于 0。
 
-> When we take the partial derivative of the total error with respect to $out_{o1}$, the quantity $\frac{1}{2}(target_{o2} - out_{o2})^{2}$ becomes zero because $out_{o1}$ does not affect it which means we’re taking the derivative of a constant which is zero.
-
-Next, how much does the output of $o_1$ change with respect to its total net input?
+Next, how much does the output of $o_1$ change with respect to its total net input ?
 
 The partial [derivative of the logistic function](http://en.wikipedia.org/wiki/Logistic_function#Derivative) is the output multiplied by 1 minus the output:
 

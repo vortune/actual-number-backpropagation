@@ -205,9 +205,15 @@ $$
 
 ## The Backwards Pass
 
+##向后传播
+
 Our goal with backpropagation is to update each of the weights in the network so that they cause the actual output to be closer the target output, thereby minimizing the error for each output neuron and the network as a whole.
 
+我们的目标是通过向后传播算法，更新网络中的每个链接权重，从而使得实际的输出尽量接近目标输出，亦即最小化每个输出层神经元的输出误差与网络的整体误差。
+
 ### Output Layer
+
+### 输出层
 
 Consider $w_5$. We want to know how much a change in $w_5$ affects the total error, aka $\frac{\partial E_{total}}{\partial w_5}$.
 

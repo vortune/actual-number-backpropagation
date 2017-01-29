@@ -267,15 +267,21 @@ $$
 
 > When we take the partial derivative of the total error with respect to $out_{o1}$, the quantity $\frac{1}{2}\|target_{o2} - out_{o2}\|^{2}$ becomes zero because $out_{o1}$ does not affect it which means we’re taking the derivative of a constant which is zero.
 >
-> 当我们对总体误差取关于 $out_{o1}$ 的偏微分时，总体误差的第二项 $\frac{1}{2} \|target_{o2} - out_{o2}\|^2$ 将等于 0，因为 $out_{o1}$ 的变化对于该项并无影响，其意义就如我们所说的，一个常数的导数总是等于 0。
+> 当我们对总体误差取关于 $out_{o1}$ 的偏微分时，总体误差的第二项 $\frac{1}{2} \|target_{o2} - out_{o2}\|^2$ 将等于0，因为 $out_{o1}$ 的变化对于该项并无影响，其意义就如我们所说的，一个常数的导数总是等于0。
 
 Next, how much does the output of $o_1$ change with respect to its total net input ?
 
-The partial [derivative of the logistic function](http://en.wikipedia.org/wiki/Logistic_function#Derivative) is the output multiplied by 1 minus the output:
+接着，就是处理输出层第一个神经元 $o_1$ 的输出变化，会受到它的网络总输入的变化影响有多大了 ？
 
+The [derivative of the logistic function](http://en.wikipedia.org/wiki/Logistic_function#Derivative) is the output multiplied by 1 minus the output:
+
+[Logistic 函数的导数](http://en.wikipedia.org/wiki/Logistic_function#Derivative)就是函数的返回值再乘以1减函数的返回值：
+$$
+out_{o1} = \frac {1}{1+e^{-net_{o1}}}
+$$
+>译注：对上面的激活函数两边取微分：
 $$
 \begin{align}
-out_{o1} &= \frac {1}{1+e^{-net_{o1}}} \\ \\
 \frac {\partial out_{o1}}{\partial net_{o1}} 
 &= out_{o1}(1-out_{o1}) \\ \\
 &= 0.75136507(1-0.75136507) \\ \\
@@ -283,11 +289,19 @@ out_{o1} &= \frac {1}{1+e^{-net_{o1}}} \\ \\
 \end{align}
 $$
 
+> ##### 译注：
+>
+> 从这里我们可以看到为什么选取 logistic 函数作为激活函数的原因。它的导数非常简单，现在的机器学习的神经网络规模往往非常大。简化其中任何一个算法步骤，不但能极大提高算法性能，同时也优化了计算的误差。
+
 Finally, how much does the total net input of $o1$ change with respect to $w_5$?
 
+最后是输出层神经元 $o_1$ 它的网络总输入的变化对于权重项 $w_5$ 的相关性 ？
+$$
+net_{o1} = w_5 \cdot out_{h1} + w_6 \cdot out_{h2} + b_2 \cdot 1
+$$
+>译注：对项目的等式两边取 $w_5$ 的偏导数：
 $$
 \begin{align}
-net_{o1} &= w_5 \cdot out_{h1} + w_6 \cdot out_{h2} + b_2 \cdot 1 \\ \\
 \frac {\partial net_{o1}}{\partial w_5} &=
 1 \cdot out_{h1} \cdot w_5^{(1-1)} + 0 + 0 \\ \\
 &= out_{h1} \\ \\
@@ -297,6 +311,7 @@ $$
 
 Putting it all together:
 
+将它们合并到一起：
 $$
 \begin{align}
 \frac {\partial E_{total}}{\partial w5} &= 

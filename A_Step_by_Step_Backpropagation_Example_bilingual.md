@@ -14,6 +14,9 @@
 > $ git clone https://github.com/vortune/actual-number-backpropagation.git
 > ```
 >
+> 上面的源码库里面有以 markdown 格式本文以及英文原文源码，扩展名是 .md 。
+> > 建议大家使用 [Typora](https://typora.io/) 来查看与编辑 markdown 文件，同时也可以用它来将文档渲染成为其他格式，譬如，pdf, html, word 等等。
+>
 > 原著：[Matthew.H.Mazur](matthew.h.mazur@gmail.com)
 >
 > 编译：[罗峥嵘](vortune@163.com)
@@ -176,7 +179,7 @@ $$
 
 >##### 译注：
 >
->误差计算的函数在机器学习中被成为`代价函数`（Cost Function），也被翻译为`成本函数`。与激活函数一样，代价函数也可以有多种形式，并不限于平方差函数。
+>误差计算的函数在机器学习中被称为`代价函数`（Cost Function），也被翻译为`成本函数`。与激活函数一样，代价函数也可以有多种形式，并不限于平方差函数。
 
 > [Some sources](http://www.amazon.com/Introduction-Math-Neural-Networks-Heaton-ebook/dp/B00845UQL6/ref=sr_1_1?ie=UTF8&qid=1426296804&sr=8-1&keywords=neural+network) refer to the target as the *ideal* and the output as the *actual*.
 >
@@ -341,12 +344,16 @@ $$
 
 > You’ll often see this calculation combined in the form of the [delta rule](http://en.wikipedia.org/wiki/Delta_rule):
 >
+> 你经常会看到计算的过程会以[delta规则](http://en.wikipedia.org/wiki/Delta_rule)的形式合并在一起：
 > $$
 > \frac {\partial E_{total}}{\partial w_5} =
 > -(target_{o1}-out_{o1}) \cdot out_{o1}(1-out_{o1}) \cdot out_{h1}
 > $$
 >
 > Alternatively, we have $\frac{\partial E_{total}}{\partial out_{o1}}$ and $\frac{\partial out_{o1}}{\partial net_{o1}}$ which can be written as $\frac{\partial E_{total}}{\partial net_{o1}}$, aka $\delta_{o1}$ (the Greek letter delta) aka the *node delta*. We can use this to rewrite the calculation above:
+>
+> 换言之，我们可以将 $\frac{\partial E_{total}}{\partial out_{o1}}$ 与 $\frac{\partial out_{o1}}{\partial net_{o1}}$ 合并写成 $\frac{\partial E_{total}}{\partial net_{o1}}$，也称其为 $\delta_{o1}$ 或*节点余量*。我们可以用它来重写上面的算式：
+>
 >
 > $$
 > \begin{align}
@@ -359,12 +366,14 @@ $$
 >
 > Therefore:
 >
+> 由上式可得：
 > $$
 > \frac{\partial E_{total}}{\partial w_5} = \delta_{o1} \cdot out_{h1}
 > $$
 >
 > Some sources extract the negative sign from $\delta$ so it would be written as:
 >
+> 有些资料将 $\delta$ 的负号展开写成：
 > $$
 > \frac{\partial E_{total}}{\partial w_5} = -\delta_{o1} \cdot out_{h1}
 > $$
@@ -372,6 +381,7 @@ $$
 
 To decrease the error, we then subtract this value from the current weight (optionally multiplied by some learning rate, eta, which we'll set to 0.5):
 
+为了降低误差，我们从当前的权重值中减掉这个节点余量（可以乘以一个我们自选的学习速率 eta，这里我们设定为 0.5）：
 $$
 \begin{align}
 w_5^+ &= w_5 - \eta \frac{\partial E_{total}}{\partial w_5} \\ \\
@@ -379,11 +389,17 @@ w_5^+ &= w_5 - \eta \frac{\partial E_{total}}{\partial w_5} \\ \\
 &= 0.35891648
 \end{align}
 $$
+>##### 译注：
+>
+>我们需要牢记的就是反向传播的结算思想，就是求解网络中每个链接权重对整体误差的影响，然后以一个学习步长量来不断更新各个权重对误差的影响。
 
 [Some](http://en.wikipedia.org/wiki/Delta_rule) [sources](http://aima.cs.berkeley.edu/) use $\alpha$ (alpha) to represent the learning rate, [others use](https://www4.rgu.ac.uk/files/chapter3%20-%20bp.pdf) $\eta$ (eta), and [others](http://web.cs.swarthmore.edu/~meeden/cs81/s10/BackPropDeriv.pdf) even use $\epsilon$  (epsilon).
 
+[有些资料](http://aima.cs.berkeley.edu/)用 $\alpha$ (alpha) 来表示学习速率，[另外一些](https://www4.rgu.ac.uk/files/chapter3%20-%20bp.pdf)用 $\eta$ (eta)，还有[其他的](http://web.cs.swarthmore.edu/~meeden/cs81/s10/BackPropDeriv.pdf)用 $\epsilon$ (epsilon) 。
+
 We can repeat this process to get the new weights $w_6$, $w_7$, and $w_8$:
 
+我们重复上面的步骤，就可以得到新的输出层中的其他链接权重 $w_6$， $w_7$，与 $w_8$ ：
 $$
 \begin{align}
 w_6^{+} &= 0.408666186 \\ \\
@@ -393,6 +409,8 @@ w_8^{+} &= 0.561370121
 $$
 
 We perform the actual updates in the neural network after we have the new weights leading into the hidden layer neurons (ie, we use the original weights, not the updated weights, when we continue the backpropagation algorithm below).
+
+当我们以上述处理输出层的方法那样，也导出了新的隐藏层的各个神经元的链接权重之后，我们会在神经网络中执行实际的更新（现在还不是时候，在接下来的反向传播算法的推算当中，我们仍然需要使用原来的权重值，而不是更新过的权重值）。
 
 ### Hidden Layer
 

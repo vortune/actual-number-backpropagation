@@ -34,6 +34,14 @@ You can play around with a Python script that I wrote that implements the backpr
 
 你可以通过一个我在[Github 源码库](https://github.com/mattm/simple-neural-network)中的一个 Python 脚本程序来体会反向传播算法。
 
+## Backpropagation Visualization
+
+For an interactive visualization showing a neural network as it learns, check out my [Neural Network visualization](http://www.emergentmind.com/neural-network).
+
+## Additional Resources
+
+If you find this tutorial useful and want to continue learning about neural networks and their applications, I highly recommend checking out Adrian Rosebrock’s excellent tutorial on [Getting Started with Deep Learning and Python](http://www.pyimagesearch.com/2014/09/22/getting-started-deep-learning-python).
+
 ## Overview
 
 ##概述

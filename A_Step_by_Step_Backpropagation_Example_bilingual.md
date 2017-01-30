@@ -36,11 +36,19 @@ You can play around with a Python script that I wrote that implements the backpr
 
 ## Backpropagation Visualization
 
+## 可视化的反向传播
+
 For an interactive visualization showing a neural network as it learns, check out my [Neural Network visualization](http://www.emergentmind.com/neural-network).
+
+你要互动形象地体会一下神经网络学习过程的话，请查看我的[神经网络视图](http://www.emergentmind.com/neural-network) 。
 
 ## Additional Resources
 
+## 额外的资料
+
 If you find this tutorial useful and want to continue learning about neural networks and their applications, I highly recommend checking out Adrian Rosebrock’s excellent tutorial on [Getting Started with Deep Learning and Python](http://www.pyimagesearch.com/2014/09/22/getting-started-deep-learning-python).
+
+如果你发现这个教程有用，并且希望继续学习神经网络以及它们的应用，我强烈建议你查看 Adrian Rosebrock 非常了不起的教程[深度学习与 Python 入门](http://www.pyimagesearch.com/2014/09/22/getting-started-deep-learning-python) 。
 
 ## Overview
 

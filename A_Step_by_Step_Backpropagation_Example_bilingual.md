@@ -440,7 +440,7 @@ Visually:
 形象地看：
 
 <center>
-<img src="./nn-calculation.png" width="60%" align=center/>
+<img src="./nn-calculation.png" width="55%" align=center/>
 </center>
 
 We’re going to use a similar process as we did for the output layer, but slightly different to account for the fact that the output of each hidden layer neuron contributes to the output (and therefore error) of multiple output neurons. We know that $out_{h1}$ affects both $out_{o1}$ and $out_{o2}$ therefore the $\frac{\partial E_{total}}{\partial out_{h1}}$ needs to take into consideration its effect on the both output neurons:

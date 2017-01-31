@@ -65,14 +65,16 @@ Here’s the basic structure:
 
 下面就是这个基本结构：
 
-<img src="./neural_network-7.png" align=center/>
+<center>
+<img src="./neural_network-7.png" width="50%">
+</center>
 
 In order to have some numbers to work with, here are the **initial weights**, the **biases**, and **training inputs/outputs**:
 
 为了展开实际的数值计算工作，这里需要初始化**权重**，**偏至**，以及用于训练的**输入**/**输出**的初始值。
-
-<img src="./neural_network-9.png" align=center/>
-
+<center>
+<img src="./neural_network-9.png" width="50%">
+</center>
 The goal of backpropagation is to optimize the weights so that the neural network can learn how to correctly map arbitrary inputs to outputs.
 
 反向传播算法的目的，就是优化神经元的链接权重，以便神经网络能够形成一个从输入变换到输出的映射关系。
@@ -128,7 +130,9 @@ $$
 >
 > 首先他是一个 S 型函数，它的值范围是 0～1（ $f(x) \in \left[0,1\right]$ ），它的跳变特性有利于该神经元对数据特征的表达。它的图形如下：
 >
+> <center>
 > <img src="./Logistic-curve.svg.png" width="300" align=center/>
+> </center>
 >
 > 此外，它的一个特征是它的微分形式非常简洁，对计算十分有利，我们很快就可以在下文中看到它的这一优势特性。
 >
@@ -259,7 +263,9 @@ Visually, here’s what we’re doing:
 
 形象地描绘一下我们要做的事情：
 
-<img src="./output_1_backprop-4.png" width="600" align=center />
+<center>
+<img src="./output_1_backprop-4.png" width="60%" align=center />
+</center>
 
 We need to figure out each piece in this equation.
 
@@ -422,7 +428,7 @@ Next, we’ll continue the backwards pass by calculating new values for $w_1$, $
 
 Big picture, here’s what we need to figure out:
 
-大局地看，这里我们解算：
+放眼全程地看，这里我们解算：
 $$
 \frac{\partial E_{total}}{\partial w_1} = \frac{\partial E_{total}}{\partial out_{h1}} \cdot
 \frac{\partial out_{h1}}{\partial net_{h1}} \cdot
@@ -433,7 +439,9 @@ Visually:
 
 形象地看：
 
-<img src="./nn-calculation.png" width="600" align=center/>
+<center>
+<img src="./nn-calculation.png" width="60%" align=center/>
+</center>
 
 We’re going to use a similar process as we did for the output layer, but slightly different to account for the fact that the output of each hidden layer neuron contributes to the output (and therefore error) of multiple output neurons. We know that $out_{h1}$ affects both $out_{o1}$ and $out_{o2}$ therefore the $\frac{\partial E_{total}}{\partial out_{h1}}$ needs to take into consideration its effect on the both output neurons:
 

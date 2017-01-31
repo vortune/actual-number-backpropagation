@@ -414,10 +414,15 @@ We perform the actual updates in the neural network after we have the new weight
 
 ### Hidden Layer
 
+### 隐藏层
+
 Next, we’ll continue the backwards pass by calculating new values for $w_1$, $w_2$, $w_3$, and $w_4$.
+
+下一步，我们将通过给 $w_1$，$w_2$，$w_3$，与 $w_4$ 重新赋值来继续进行反向传播。
 
 Big picture, here’s what we need to figure out:
 
+全局地看，这里我们需要处理：
 $$
 \frac{\partial E_{total}}{\partial w_1} = \frac{\partial E_{total}}{\partial out_{h1}} \cdot
 \frac{\partial out_{h1}}{\partial net_{h1}} \cdot
@@ -426,9 +431,14 @@ $$
 
 Visually:
 
+形象地看：
+
 <img src="./nn-calculation.png" width="600" align=center/>
 
 We’re going to use a similar process as we did for the output layer, but slightly different to account for the fact that the output of each hidden layer neuron contributes to the output (and therefore error) of multiple output neurons. We know that $out_{h1}$ affects both $out_{o1}$ and $out_{o2}$ therefore the $\frac{\partial E_{total}}{\partial out_{h1}}$ needs to take into consideration its effect on the both output neurons:
+
+我们将进行一个类似的步骤，就像我们在输出层中做过的那样，不过稍微不同的是，每个隐藏层神经元的输出（以及由此而来的误差）都会被传递到多个输出层的神经元中。我们知道 $out_{h1}$ 会影响到 $out_{o1}$ 与 $out_{o2}$，所以需要考虑 $\frac{\partial E_{total}}{\partial out_{h1}}$ 对两个输出层神经元的影响：
+
 
 $$
 \frac{\partial E_{total}}{\partial out_{h1}} = 

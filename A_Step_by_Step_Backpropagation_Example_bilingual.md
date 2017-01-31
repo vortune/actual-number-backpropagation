@@ -290,7 +290,7 @@ $$
 
 Next, how much does the output of $o_1$ change with respect to its total net input ?
 
-接着，就是处理输出层第一个神经元 $o_1$ 的输出变化，会受到它的网络总输入的变化影响有多大了 ？
+接着，就是输出层第一个神经元 $o_1$ 的输出变化，会受该节点的网络总输入的影响有多大呢？
 
 The [derivative of the logistic function](http://en.wikipedia.org/wiki/Logistic_function#Derivative) is the output multiplied by 1 minus the output:
 

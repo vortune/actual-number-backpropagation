@@ -71,7 +71,7 @@ Here’s the basic structure:
 
 In order to have some numbers to work with, here are the **initial weights**, the **biases**, and **training inputs/outputs**:
 
-为了展开实际的数值计算工作，这里需要初始化**权重**，**偏至**，以及用于训练的**输入**/**输出**的初始值。
+为了展开实际的数值计算工作，这里需要初始化**权重**，**偏至**，以及用于训练的**输入**/**输出**的初始值：
 <center>
 <img src="./neural_network-9.png" width="50%">
 </center>

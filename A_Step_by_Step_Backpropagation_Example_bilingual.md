@@ -447,6 +447,7 @@ $$
 
 Starting with $\frac{\partial E_{o1}}{\partial out_{h1}}$:
 
+先从 $\frac{\partial E_{o1}}{\partial out_{h1}}$ 开始：
 $$
 \frac{\partial E_{o1}}{\partial out_{h1}} =
 \frac{\partial E_{o1}}{\partial net_{o1}} \cdot \frac{\partial net_{o1}}{\partial out_{h1}}
@@ -454,6 +455,7 @@ $$
 
 We can calculate $\frac{\partial E_{o1}}{\partial net_{o1}}$ using values we calculated earlier:
 
+我们可以利用前面的计算结果来计算 $\frac{\partial E_{o1}}{\partial net_{o1}}$ ：
 $$
 \begin{align}
 \frac{\partial E_{o1}}{\partial net_{o1}} &= 
@@ -465,6 +467,7 @@ $$
 
 And $\frac{\partial net_{o1}}{\partial out_{h1}}$ is equal to $w_5$:
 
+并且 $\frac{\partial net_{o1}}{\partial out_{h1}}$ 等于 $w_5$ ：
 $$
 net_{o1} = w_5 \cdot out_{h1} + w_6 \cdot out_{h2} + b_2 \cdot 1
 $$
@@ -474,6 +477,7 @@ $$
 
 Plugging them in:
 
+将它们代入：
 $$
 \begin{align}
 \frac{\partial E_{o1}}{\partial out_{h1}} &=
@@ -485,12 +489,14 @@ $$
 
 Following the same process for $\frac{\partial E_{o2}}{\partial out_{h1}}$, we get:
 
+由相同的步骤计算 $\frac{\partial E_{o2}}{\partial out_{h1}}$ ，可得：
 $$
 \frac {\partial E_{o2}}{\partial out_{h1}} = -0.01904919
 $$
 
 Therefore:
 
+所以有：
 $$
 \begin{align}
 \frac {\partial E_{total}}{\partial out_{h1}} &=
@@ -502,6 +508,7 @@ $$
 
 Now that we have $\frac{\partial E_{total}}{\partial out_{h1}}$, we need to figure out $\frac{\partial out_{h1}}{\partial net_{h1}}$ and then $\frac{\partial net_{h1}}{\partial w}$ for each weight:
 
+现在我们已经有了 $\frac{\partial E_{total}}{\partial out_{h1}}$，我们需要计算出 $\frac{\partial out_{h1}}{\partial net_{h1}}$ 以及隐藏层到收入层的每个链接权重的 $\frac{\partial net_{h1}}{\partial w}$ ：
 $$
 out_{h1} = \frac {1}{1+e^{-net_{h1}}}
 $$
@@ -516,6 +523,7 @@ $$
 
 We calculate the partial derivative of the total net input to $h_1$ with respect to $w_1$ the same as we did for the output neuron:
 
+我们以前面计算输出层神经元时的同样方法，计算隐藏层神经元 $h_1$ 的网络总输入对于 $w_1$ 的偏导数：
 $$
 net_{h1} = w_1 \cdot i_1 + w_2 \cdot i_2 + b_1 \cdot 1
 $$
@@ -529,6 +537,7 @@ $$
 
 Putting it all together:
 
+合并计算：
 $$
 \begin{align}
 \frac {\partial E_{total}}{\partial w_1} &=
@@ -542,6 +551,7 @@ $$
 
 >You might also see this written as:
 >
+>我们也可能看到被写成下面的形式：
 >$$
 >\begin{align}
 >\frac {\partial E_{total}}{\partial w_1} &=
@@ -561,6 +571,7 @@ $$
 
 We can now update $w_1$:
 
+现在我们可以更新 $w_1$ 了：
 $$
 \begin{align}
 w_1^{+} &= w_1 - \eta \cdot \frac {\partial E_{total}}{\partial w_1} \\ \\
@@ -569,8 +580,9 @@ w_1^{+} &= w_1 - \eta \cdot \frac {\partial E_{total}}{\partial w_1} \\ \\
 \end{align}
 $$
 
-Repeating this for $w_2$, $w_3$, and $w_4$
+Repeating this for $w_2$, $w_3$, and $w_4$ :
 
+重复以上的步骤，我们可以更新 $w_2$，$w_3$，$w_4$ ：
 $$
 w_2^{+} = 0.19956143 \\ \\
 w_3^{+} = 0.24975114 \\ \\
@@ -578,5 +590,7 @@ w_4^{+} = 0.29950229 \\ \\
 $$
 
 Finally, we’ve updated all of our weights! When we fed forward the 0.05 and 0.1 inputs originally, the error on the network was 0.298371109. After this first round of backpropagation, the total error is now down to 0.291027924. It might not seem like much, but after repeating this process 10,000 times, for example, the error plummets to 0.000035085. At this point, when we feed forward 0.05 and 0.1, the two outputs neurons generate 0.015912196 (vs 0.01 target) and 0.984065734 (vs 0.99 target).
+
+
 
 If you’ve made it this far and found any errors in any of the above or can think of any ways to make it clearer for future readers, don’t hesitate to [drop me a note](https://mattmazur.com/contact/). Thanks!

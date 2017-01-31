@@ -591,6 +591,10 @@ $$
 
 Finally, we’ve updated all of our weights! When we fed forward the 0.05 and 0.1 inputs originally, the error on the network was 0.298371109. After this first round of backpropagation, the total error is now down to 0.291027924. It might not seem like much, but after repeating this process 10,000 times, for example, the error plummets to 0.000035085. At this point, when we feed forward 0.05 and 0.1, the two outputs neurons generate 0.015912196 (vs 0.01 target) and 0.984065734 (vs 0.99 target).
 
-
+最后，我们更新了所有的权重项！当我们刚刚开始以 0.05 和 0.1 作为输入时，网络的误差为 0.298371109。在第一次反向传播之后，总误差下降到 0.291027924 。这看起来没有什么了不起，不过在循环了 10,000 才之后，误差直线下降为 0.000035085 。在这个点上，我们代入 0.05 和 0.1 ，两个输出层神经元输出为 0.015912196（期望为 0.01）以及 0.984065734（期望为 0.99）。
 
 If you’ve made it this far and found any errors in any of the above or can think of any ways to make it clearer for future readers, don’t hesitate to [drop me a note](https://mattmazur.com/contact/). Thanks!
+
+如果能对这个文档有什么改进，或者发现任何的错误，又或者你认为有什么方法能够让未来的读者更清晰地理解它，不妨[发个信息给我](https://mattmazur.com/contact/)。谢谢！
+
+> 译注：如果你对译文有任何的改进意见，或者发现任何错误，请你也不妨[发个信息给我](vortune@163.com)。谢谢！:)

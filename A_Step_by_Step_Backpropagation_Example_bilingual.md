@@ -606,3 +606,43 @@ If you’ve made it this far and found any errors in any of the above or can thi
 如果你对这个文档有什么改进，或者发现任何的错误，又或者你认为有什么方法能够让未来的读者更清晰地理解它，不妨[发个信息给我](https://mattmazur.com/contact/)。谢谢！
 
 > 译注：如果你对译文有任何的改进意见，或者发现任何错误，请你也不妨[发个信息给我](vortune@163.com)。谢谢！:)
+
+## 总结
+
+> 这一段是原文没有的，梳理一个最简单清晰的脉络，大家会更容易理解和记忆。
+
+反向传播算法的核心思想是运用[链式规则](https://en.wikipedia.org/wiki/Chain_rule) ( chain rule )，反向推导反馈神经网络中每个链接权重对于网络整体误差的偏导数，再以[差模规则](https://en.wikipedia.org/wiki/Delta_rule) (delta rule) 逐步减少每个链接权重对网络输出整体误差的影响。
+
+即：
+$$
+\begin{align}
+w_{ji} &:= w_{ji} - \Delta w_{ji} \\
+&:= w_{ji} - \alpha(t_j-y_j)g'(h_j)x_i
+\end{align}
+$$
+上式中：
+- $\alpha$ 是一个常量，称为“学习步长”（也有叫“学习速率”的）
+- $g(x)$ 是神经元的激活函数
+- $t_j$ 是网络的总目标输出
+- $y_j$ 是网络的总实际输出
+- $h_j$ 是第 $j$ 个神经元的总输入
+- $x_i$ 第 $i$ 个输入
+
+链式规则是函数嵌套调用时的微分规则。若：
+$$
+y(x) = f(g(h(x)))
+$$
+则有：
+$$
+\frac{dy}{dx} = \frac{dy}{dg} \cdot \frac{dg}{dh} \cdot \frac{dh}{dx}
+$$
+
+最后，希望这个文章能够成为大家学习和理解机器学习和人工智能的良好开端。
+
+
+
+祝大家，新年快乐！阖家安康！
+
+罗峥嵘
+
+2017年春节，于广州。

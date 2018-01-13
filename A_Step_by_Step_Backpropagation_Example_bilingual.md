@@ -282,7 +282,7 @@ $$
 
 $$
 \begin{align}
-\frac {\partial E_{o1}}{\partial out_{o1}} &=
+\frac {\partial E_{total}}{\partial out_{o1}} &=
 2 \cdot \frac {1}{2}\|target_{o1}-out_{o1}\|^{2-1} + 0 \\ \\
 &= \|target_{o1}-out_{o1}\| \\ \\
 &= \|0.01-0.75136507\| \\ \\
@@ -343,8 +343,8 @@ $$
 \frac {\partial E_{total}}{\partial out_{h1}} \cdot
 \frac {\partial out_{h1}}{\partial net_{h1}} \cdot
 \frac {\partial net_{h1}}{\partial w_5} \\ \\
-&= 0.036350306 * 0.241300709 * 0.05 \\ \\
-&= 0.000433568
+&= 0.74136507 * 0.186815602 * 0.593269992 \\ \\
+&= 0.082167041
 \end{align}
 $$
 
